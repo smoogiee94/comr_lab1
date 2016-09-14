@@ -41,22 +41,6 @@ void setup() {
 
 }
 
-void turnLeft(){
-  LServo.write(88);
-  RServo.write(80);
-  delay(880);
-}
-
-void turnRight(){
-  LServo.write(100);
-  RServo.write(92);
-  delay(880);
-}
-void moveForward(){
-  LServo.write(98); 
-  RServo.write(80);
-  delay(3257); //how long would it take to travel 30 inches      
-}
 int Select =0;
 void loop() {
   // set the cursor to column 0, line 1
@@ -103,20 +87,22 @@ void loop() {
           turnRight();
         }
     }
-    if (buttons & BUTTON_SELECT) {
-      lcd.setCursor(2,0); 
-      if (Select==1) {
-          Select=0;
-          lcd.setBacklight(GREEN);
-          lcd.print("STRAIGHT");
-          LServo.write(90); 
-          RServo.write(90); 
-        }
-      else {
-          Select=1;
-          lcd.setBacklight(VIOLET);
-          lcd.print("CIRCULAR");
-        }
-    }
   }
+}
+
+void turnLeft(){
+  LServo.write(88);
+  RServo.write(80);
+  delay(880);
+}
+
+void turnRight(){
+  LServo.write(100);
+  RServo.write(92);
+  delay(880);
+}
+void moveForward(){
+  LServo.write(98); 
+  RServo.write(80);
+  delay(3257); //how long would it take to travel 30 inches      
 }
