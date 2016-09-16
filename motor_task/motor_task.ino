@@ -56,53 +56,95 @@ void loop() {
     RServo.write(90); 
 
     if (buttons & BUTTON_UP) { //Forward 70 inches, Backward 70 inches
-
       lcd.print("Forward/Back");
-      LServo.write(98); 
+      LServo.write(99); 
       RServo.write(80);   
-      delay(7600); // how long would it take to travel 70 inches
-      LServo.write(82);
+      delay(12200); // how long would it take to travel 70 inches
+      LServo.write(90);
+      RServo.write(90);
+      delay(1000);
+      LServo.write(81);
       RServo.write(100); 
+      delay(12200);
+      LServo.write(90);
+      RServo.write(90);
      }
+     
     if (buttons & BUTTON_DOWN) { //Square (30 inch sides)   
       lcd.print("Down");
     }
+    
     if (buttons & BUTTON_LEFT) {
       
       lcd.print("Square");
       lcd.setCursor(0,1);
       lcd.print("Turning Left");
-      for(int i = 0; i < 4; ++i){
-        moveForward();
-        turnLeft();
-      }        
+      moveForward();
+      delay(2400);
+      stopServos();
+      turnLeft();
+      stopServos();
+      for (int i = 0; i < 3; ++i){
+      moveForward();
+      delay(4780);
+      stopServos();
+      turnLeft();
+      stopServos();
+      }
+      moveForward();
+      delay(2100);
+      stopServos();
+      
+      
+//      for(int i = 0; i < 4; ++i){
+//        moveForward();
+//        turnLeft();
+//      }      
+
+      
     }
     if (buttons & BUTTON_RIGHT) {
-
-        lcd.print("Square");
-        lcd.setCursor(0,1);
-        lcd.print("Turning Right");
-        for(int i = 0; i < 4; ++i){
-          moveForward();
-          turnRight();
-        }
+      lcd.print("Square");
+      lcd.setCursor(0, 1);
+      lcd.print("Turning Right");
+      moveForward();
+      delay(2400);
+      stopServos();
+      turnRight();
+      stopServos();
+      for (int i = 0; i < 3; ++i){
+        moveForward();
+        delay(4780);
+        stopServos();
+        turnRight();
+        stopServos();
+      }
+      moveForward();
+      delay(2100);
+      stopServos();
+      }
     }
-  }
+}
+
+void stopServos(){
+  LServo.write(90);
+  RServo.write(90);
+  delay(500);
 }
 
 void turnLeft(){
-  LServo.write(88);
+  LServo.write(80);
   RServo.write(80);
-  delay(880);
+  delay(560);
 }
 
 void turnRight(){
   LServo.write(100);
-  RServo.write(92);
-  delay(880);
+  RServo.write(100);
+  delay(620);
 }
 void moveForward(){
-  LServo.write(98); 
+  LServo.write(99); 
   RServo.write(80);
-  delay(3257); //how long would it take to travel 30 inches      
+//  delay(3257); //how long would it take to travel 30 inches      
 }

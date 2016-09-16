@@ -14,7 +14,7 @@ void loop() {
   LServo.write(90);
   RServo.write(90);
   delay(3000);
-  LServo.write(96);
-  RServo.write(80);
-  delay(10900);
+  LServo.write(100);
+  RServo.write(85);
+  delay(60000);
 }
